@@ -13,6 +13,8 @@ public class BlockScanner{
     String[] getTopKTransactionHash(int top, long height)throws Exception{
         String blockHash = getBlockHash(height);// eg. block 680000 is 000000000000000000076c036ff5119e5a5a74df77abf64203473364509f7732
         List<Transaction> transactionInCurrentBlock = getBlockTransactions(blockHash);// it will give list of txn in current block
+
+
         return null;
         // todo implementation
     }
@@ -35,6 +37,12 @@ public class BlockScanner{
             JSONArray txnOutPuts = (JSONArray)transactionJson.get("vout");
             currentTransaction.vin = new Transaction.TransactionInput[txnInputs.length()];
             currentTransaction.vout = new Transaction.TransactionOutPut[txnOutPuts.length()];
+            for(int inputPos = 0; inputPos < txnInputs.length(); inputPos++){
+                currentTransaction.vin[inputPos].txid = ((JSONObject)txnInputs.get(inputPos)).get("txid").toString();
+            }
+            for(int outputPos = 0; outputPos < txnOutPuts.length(); outputPos++){
+                currentTransaction.vout[outputPos].txid = ((JSONObject)txnOutPuts.get(outputPos)).get("scriptpubkey").toString();
+            }
         }
         return transactions;
     }
