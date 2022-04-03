@@ -1,5 +1,5 @@
 What? :
-his Utility is for finding top-K transactions which has hieghtest no of ancestors within the block of bitcoin ledger.
+his Utility to increase the block reward by finding top-K transactions which has hieghtest no of ancestors within the block of bitcoin ledger.
 
 where (Applications)? :
 - whale alerts: you can build around a notification system to trigger alert large volume transactions
